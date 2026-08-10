@@ -1,7 +1,7 @@
 import { Router } from "express";
 import FornecedorController from "./fornecedor.controller.js";
 import { validate } from "../../../core/middlewares/validate.js";
-import { createFornecedorDTO, updateFornecedorDTO, getFornecedorDTO, getDescricaoFornecedorDTO } from "./fornecedor.dto.js";
+import { createFornecedorDTO, updateFornecedorDTO, getFornecedorDTO, getRazaoSocialFornecedorDTO } from "./fornecedor.dto.js";
 import { auth } from "../../../core/middlewares/auth.middleware.js";
 
 const router = Router();
@@ -23,10 +23,10 @@ router.get("/:id",
     FornecedorController.getById
 );
 
-router.get("/descricao/:descricao",
+router.get("/razaoSocial/:razao_social",
     auth,
-    validate(getDescricaoFornecedorDTO, "params"),
-    FornecedorController.getByDescricao
+    validate(getRazaoSocialFornecedorDTO, "params"),
+    FornecedorController.getByRazaoSocial
 );
 
 router.put("/:id", 

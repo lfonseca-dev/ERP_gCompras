@@ -5,17 +5,47 @@ export const createFornecedorDTO = z.object({
         .string({required_error: "Código é obrigatório"})
         .min(1, "Código não pode ser vazio"),
 
-    descricao: z
-        .string({required_error: "Descrição é obrigatória"})
-        .min(1, "Descrição não pode ser vazia")
-        .max(100, "Descrição deve ter no máximo 100 caracteres")
+    razao_social: z
+        .string({required_error: "Razão Social é obrigatória"})
+        .min(1, "Razão Social não pode ser vazia")
+        .max(100, "Razão Social deve ter no máximo 100 caracteres"),
+
+    cnpj: z
+        .string({required_error: "CNPJ é obrigatório"})
+        .min(14, "CNPJ deve ter no mínimo 14 caracteres")
+        .max(18, "CNPJ deve ter no máximo 18 caracteres"),
+
+    inscricao_estadual: z
+        .string({required_error: "Inscrição Estadual é obrigatória"})
+        .min(1, "Inscrição Estadual não pode ser vazia")
+        .max(20, "Inscrição Estadual deve ter no máximo 20 caracteres"),
+
+    email: z
+        .string({required_error: "Email é obrigatório"})
+        .email("Email inválido")
+        .max(100, "Email deve ter no máximo 100 caracteres"),
+
+    telefone: z
+        .string({required_error: "Telefone é obrigatório"})
+        .min(10, "Telefone deve ter no mínimo 10 caracteres")
+        .max(15, "Telefone deve ter no máximo 15 caracteres"),
+
+    endereco: z
+        .string({required_error: "Endereço é obrigatório"})
+        .min(1, "Endereço não pode ser vazio")
+        .max(200, "Endereço deve ter no máximo 200 caracteres"),
+
+    regimeT_id: z
+        .number({required_error: "ID do Regime Tributário é obrigatório"})
+        .int("ID do Regime Tributário deve ser um número inteiro")
+        .positive("ID do Regime Tributário deve ser maior que zero")
 });
 
 export const updateFornecedorDTO = createFornecedorDTO.partial();
 
-export const getDescricaoFornecedorDTO = z.object({
-    descricao: z
-        .string({required_error: "Descrição é obrigatória"})
+export const getRazaoSocialFornecedorDTO = z.object({
+    razao_social: z
+        .string({required_error: "Razão Social é obrigatória"})
 });
 
 export const getFornecedorDTO = z.object({

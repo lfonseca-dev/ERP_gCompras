@@ -2,8 +2,8 @@ import pool from "../../../core/database/data.js";
 
 const EmpresaRepository = {
     async create(empresa) {
-        const [result] = await pool.execute("INSERT INTO empresa (codigo, descricao) VALUES (?, ?)", 
-            [empresa.codigo, empresa.descricao]);
+        const [result] = await pool.execute("INSERT INTO empresa (codigo, razao_social, cnpj, inscricao_estadual, email, telefone, endereco) VALUES (?, ?, ?, ?, ?, ?, ?)", 
+            [empresa.codigo, empresa.razao_social, empresa.cnpj, empresa.inscricao_estadual, empresa.email, empresa.telefone, empresa.endereco]);
         return result;
     },
 
@@ -23,13 +23,13 @@ const EmpresaRepository = {
     },
 
     async update(id, empresa) {
-        const [result] = await pool.execute("UPDATE empresa SET codigo = ?, descricao = ?, updated_at = NOW() WHERE id = ?", 
-            [empresa.codigo, empresa.descricao, id]);
+        const [result] = await pool.execute("UPDATE empresa SET codigo = ?, razao_social = ?, cnpj = ?, inscricao_estadual = ?, email = ?, telefone = ?, endereco = ?, updated_at = NOW() WHERE id = ?", 
+            [empresa.codigo, empresa.razao_social, empresa.cnpj, empresa.inscricao_estadual, empresa.email, empresa.telefone, empresa.endereco, id]);
         return result;
     },
 
     async delete(id) {
-        const [result] = await pool.execute("UPDATE empresa SET ativo = FALSE, deleted_at = NOW() WHERE id = ?", [id]);
+        const [result] = await pool.execute("UPDATE empresa SET deleted_at = NOW() WHERE id = ?", [id]);
         return result;
     }
 };

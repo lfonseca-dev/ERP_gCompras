@@ -41,8 +41,8 @@ const FornecedorService = {
         return fornecedor;
     },
 
-    async getByDescricao(descricao) {
-        const Fornecedor = await FornecedorRepository.getByDescricao({ descricao });
+    async getByRazaoSocial(razao_social) {
+        const Fornecedor = await FornecedorRepository.getByRazaoSocial({ razao_social });
 
         if (!Fornecedor) {
             throw new AppError({

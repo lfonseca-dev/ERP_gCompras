@@ -30,7 +30,7 @@ const RegimeTRepository = {
     },
 
     async delete(id) {
-        const [result] = await pool.execute("UPDATE regime_tributario SET ativo = FALSE, deleted_at = NOW() WHERE id = ?", [id]);
+        const [result] = await pool.execute("UPDATE regime_tributario SET deleted_at = NOW() WHERE id = ?", [id]);
         return result;
     }
 };

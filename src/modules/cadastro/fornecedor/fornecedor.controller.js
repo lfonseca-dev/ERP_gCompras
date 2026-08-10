@@ -27,8 +27,8 @@ const FornecedorController = {
         });
     }),
 
-    getByDescricao: asyncHandler(async (req, res) => {
-        const data = await FornecedorService.getByDescricao(req.params.descricao);
+    getByRazaoSocial: asyncHandler(async (req, res) => {
+        const data = await FornecedorService.getByRazaoSocial(req.params.razao_social);
         return response.success(res, {
             message: "Fornecedor encontrado",
             data
