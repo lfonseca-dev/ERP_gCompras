@@ -54,6 +54,19 @@ const EmpresaFornecedorService = {
             });
         }
         return vinculos;
+    },
+
+    async validateVinculo(empresa_id, fornecedor_id) {
+        const vinculo = await EmpresaFornecedorRepository.getByEmpresaFornecedor(empresa_id, fornecedor_id);
+
+        if (!vinculo) {
+            throw new AppError({
+                message: "Fornecedor não vinculado à empresa",
+                reason: "FORNECEDOR_NOT_LINKED_TO_COMPANY",
+                statusCode: 403,
+            });
+        }
+        return vinculo;
     }
 };
 

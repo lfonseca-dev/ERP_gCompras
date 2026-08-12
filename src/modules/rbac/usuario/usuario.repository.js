@@ -10,7 +10,7 @@ const UsuarioRepository = {
     
     async getAll() {
         const [rows] = await pool.query(
-            "SELECT id, nome, email, ativo, nivel_acesso_id, empresa_id, created_at, updated_at FROM usuario WHERE deleted_at IS NULL");
+            "SELECT * FROM usuario WHERE deleted_at IS NULL");
         return rows;
     },
 

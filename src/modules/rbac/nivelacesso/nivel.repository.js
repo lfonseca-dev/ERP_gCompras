@@ -2,9 +2,6 @@ import pool from "../../../core/database/data.js";
 
 const NivelRepository = {
     async create(nivelAcesso) {
-        console.log("REPOSITORY:", nivelAcesso);
-        console.log("codigo:", nivelAcesso.codigo);
-        console.log("descricao:", nivelAcesso.descricao);
         const [result] = await pool.execute("INSERT INTO nivel_acesso (codigo, descricao) VALUES (?, ?)", [nivelAcesso.codigo, nivelAcesso.descricao]);
         return result;
     },
